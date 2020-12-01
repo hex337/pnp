@@ -1,0 +1,333 @@
+-- Config Script
+-- 1/31/2015
+-- v4.02c
+-- 
+-- If in doubt, set your prompt to this: (or type "fix prompt")
+-- prompt <%t|%h|%H|%m|%M|%v|%V|%e|%x|%X|%g|%s|%q|%y|%L|%S|%a|%l|%d|%C|%f|%b|%p|%r>%c
+--
+-- If you like a bit more space before your prompt, add some extra %c's before it, like this
+-- prompt %c<%t|%h|%H|%m|%M|%v|%V|%e|%x|%X|%g|%s|%q|%y|%L|%S|%a|%l|%d|%C|%f|%b|%p|%r>%c
+--
+
+dslpnp = dslpnp or {}
+dslpnp.config = dslpnp.config or {}
+
+--dslpnp.config.download_path = "http://shatteredcloud.com/scripts/"
+dslpnp.config.download_path = "http://dslpnp.altervista.org/"
+
+dslpnp.config.scripts_list = {
+	"affects.echoes",
+	"affects.bar",
+	"affects.flags",
+	"affects.respell",
+	"affects.gag",
+	"character.equipment",
+	"character.disarm",
+	"character.spellup",
+	"statusbar.posn",
+	"statusbar.alterform",
+	"highlighter.custom",
+	"character.standup",
+	"compass",
+}
+
+dslpnp.config.initialize = {  -- List of scripts to initialize upon connect -- Scripts in sidebar not included
+	--"gauges",
+	--"xpgauge",
+	--"people",
+	--"highlighter",
+	"ticktimer",
+	--"keys",
+	"moons",
+	"roller",
+	--"speedwalk",
+	--"affects.echoes",
+	--"affects.flags",
+	--"affects.respell",
+	--"affects.gag",
+	"character.equipment",
+	"character.disarm",
+	"character.spellup",
+	--"statusbar.posn",
+	--"statusbar.alterform",
+	--"editor",
+	--"character.standup",
+}
+
+dslpnp.config.disable = {  -- List of scripts to disable upon connect
+--	"gourd",
+	"enchant",
+	"affects.bar",
+	"highlighter.custom",
+	"affects.gag",
+	"compass",
+}
+
+-- Configure screen layout here
+dslpnp.config.sidebar = {
+	width = "35%",
+	position = "right",
+	top = {  -- List of scripts to be positioned in the top section of the sidebar
+		height = "45%",  -- height must be in percent
+		"chat",
+	},
+	middle = {  -- List of scripts to be positioned in the middle section of the sidebar
+		height = "10%",
+		"buttons",
+		"history",
+	},
+	bottom = {  -- List of scripts to be positioned in the bottom section of the sidebar
+		height = "45%",  -- height must be in percent
+		"affects",
+		"enchant",
+		"gourd",
+		"battle",
+	},
+	display = {  -- determines what windows to display on connect
+		top = {{"chat",1}},
+		middle = {"buttons"},
+		bottom = {"affects","gourd"},
+	}
+}
+
+-- CONFIGURATIONS FOR INDIVIDUAL SCRIPTS --
+
+dslpnp.config.borders = {
+	bottom = "40 + 2.5%",
+}
+
+dslpnp.config.statusbar = {
+	height = 40,
+	width = "60%",
+	x = 0, y = 0, origin = "bottomleft",
+	fontSize = 8,
+	display = [[{Gname{W | ({C%t{W) (%h{W/{W%H{xhp {W%m{W/{W%M{xm {W%v{W/{W%V{xmv{W) ({G%e{W)%c{G%d{W - {G%S {W- {C%r{W]],
+	echo = [[%c&f%c%Q{W<%h/{W%Hhp %m/{W%Mm %v/{W%Vmv> {W({G%e{W){x]],
+}
+
+dslpnp.config.chat = {
+	fontSize = 8,
+	channels =  {
+		{"All", "all"},
+		{"Public", "yell", "shout", "clan gossip", "gossip", "ask", "answer"},
+		{"Clan", "ooc clan", "ooc kingdom", "clan", "kingdom"},
+		{"Private", "group tell", "say", "tell", "whisper", "pray"}
+	},
+	show_border = false,
+}
+
+dslpnp.config.affects = {
+	fontSize = 8,
+	show_border = false,
+	highlight_color = "red",
+	highlight_time = 5,
+}
+
+dslpnp.config.gourd = {
+	show_border = false
+}
+
+dslpnp.config.people = {
+	use_database = false,
+	update_col = "<dsl_lt_yellow>",
+	add_col = "<dsl_lt_red>",
+	titles = {}, -- add missing ranks and titles here as a comma separated list (each item must be in quotes)
+}
+
+dslpnp.config.highlighter = {
+    highlight_clanners = true,
+    show_clanner_level = true,
+    show_kingdom_name = false,
+    enemy_sign = "*",
+    ally_sign = "+",
+	colors = {
+		["Black Robes"] = "dsl_black",
+		["Red Robes"] = "dsl_lt_red",
+		["White Robes"] = "dsl_lt_white",
+		["Bloodlust"] = "dsl_red",
+		["Shalonesti"] = "dsl_green",
+		["Justice"] = "DodgerBlue",
+		["Knighthood"] = "deep_sky_blue",
+		["Shadow"] = "dsl_black",
+		["Slayers"] = "dsl_lt_yellow",
+		["Wargar"] = "dsl_lt_cyan",
+		["Chaos"] = "dsl_black",
+		["Loner"] = "dsl_lt_white",
+		["Renegade"] = "dsl_lt_white",
+		["Dragon"] = "dsl_lt_green",
+		["Demon"] = "dsl_black",
+		["Angel"] = "dsl_lt_white",
+		["Balanx"] = "dsl_blue",
+    },
+}
+
+dslpnp.config.gauges = {
+	height = "2%",
+	width = "15%",
+	display = "number",
+	order = {"health", "mana", "moves"},
+	colors = {health = "vermilion", mana = "cobalt", moves = "emerald"},
+	font_size = 12,
+	font_colors = {health = "white", mana = "white", moves = "white"},
+	x = 0, y = "40", origin = "bottomleft",
+	orientation = "horizontal",
+	layout = "horizontal",
+}
+
+dslpnp.config.xpgauge = {
+	height = "2%",
+	width = "15%",
+	display = "none",
+	color = "orange",
+	font_size = 12,
+	font_color = "white",
+	x = "45%", y = "40", origin = "bottomleft",
+	orientation = "horizontal",
+}
+
+dslpnp.config.ticktimer = {
+	increment = 0.25, -- needs to be multiple of 0.05
+	height = "20%",
+	width = "2%",
+	color = "silver",
+	message_on_tick = "TICK!",
+	message_color = "red",
+	display_tick_times = true,
+	warn_time = 5,
+	warn_message = "5 seconds until tick!",
+	close_time = 15,
+	color_warn = false,
+	color_warn_message = true,
+	warn_colors = {
+		close = "yellow",
+		warn = "red",
+		message = "red",
+	},
+	x = 0, y = 0, origin = "bottomright",
+	orientation = "vertical",
+	show_text_in_gauge = true,
+	font_size = 12,
+	font_color = "white",
+}
+
+dslpnp.config.keys = {
+	basic = { -- This set provides basic movement for the main keys.
+		enabled = true,
+		["5"] = "scan",
+		["0"] = "where",
+		["."] = nil,
+		["*"] = nil,
+		["/"] = nil,
+		["="] = nil,
+		["clear"] = nil,
+		["enter"] = nil
+	},
+	shift = { -- This set opens doors in the given direction for the main keys.
+		enabled = true,
+		["5"] = nil,
+		["0"] = nil,
+		["."] = nil,
+		["*"] = nil,
+		["/"] = nil,
+		["="] = nil,
+		["clear"] = nil,
+		["enter"] = nil
+	},
+	alt = {
+		enabled = false,
+	},
+	control = {
+		enabled = false,
+	},
+	meta = { -- This set closes doors in the given direction for the main keys.
+		enabled = true,
+		["5"] = nil,
+		["0"] = nil,
+		["."] = nil,
+		["*"] = nil,
+		["/"] = nil,
+		["="] = nil,
+		["clear"] = nil,
+		["enter"] = nil
+	},
+}
+
+dslpnp.config.enchant = {
+	fontSize = 8,
+	auto_enchant = 0
+}
+
+dslpnp.config.buttons = {
+	rows = 4,
+	columns = 6,
+	fontSize = 8
+}
+
+dslpnp.config.battle = {
+	offset = 1,
+	fontSize = 8,
+	gag_combat = true,
+	gag_non_damage = true,
+	show_border = true,
+	show_damage = false,
+	show_damage_by_me = true,
+	show_damage_to_me = true,
+	summarize_damage = true,
+	dam_format = "%a%r %n %v %t (%d) %f"
+-- 		format options:
+--		%a = attacker,
+--		%t = target,
+--		%v = damage verb,
+--		%n = damage noun,
+--		%d = damage total,
+--		%h = number of hits,
+--		%s = number of swings,
+--		%f = weapon flags,
+--		%r = possessive ending,
+--		%p = punctuation
+
+}
+
+dslpnp.config.command = {
+	spam_guard = true,
+	spam_count = 19,
+	spam_break = "SPAM GUARD!!!",
+	show_break = true,
+}
+
+dslpnp.config.affects.flags = {
+	flag_border_left = "(",
+	flag_border_right = ")",
+  flag_border_color = "white",
+	flag_color = "dsl_lt_yellow",
+	--flags_list = {"sanctuary", "haste", "bless", "fly", "pass door",
+		--"protection good", "protection evil", "protection neutral"},
+	flag_line_location = "beginning",
+	flag_line = 0
+}
+
+dslpnp.config.history = {
+    fontSize = 10,
+	show_border = false,
+    show_time = true,
+    line_spacing = 0,
+    real_time = true,
+    military_time = false
+}
+
+dslpnp.config.highlighter.custom = {	
+    triggers = {
+		{pat = [[^Players near you:$]],class = "next"},
+		{pat = [[^You quest out with your magic in search of others\.$]],class = "next"},
+		{pat = [[^Looking around you see:$]],class = "next"},
+		{pat = [[^[\w']+ clan gossips '.*'$]],class = "line"},
+	},
+}
+
+dslpnp.config.compass = {
+	x = "35%",
+	y = 0,
+	width = 100,
+	height = 100,
+	origin = "topright"
+}
