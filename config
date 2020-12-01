@@ -24,11 +24,11 @@ dslpnp.config.scripts_list = {
 	"character.equipment",
 	"character.disarm",
 	"character.spellup",
-	"statusbar.posn",
-	"statusbar.alterform",
-	"highlighter.custom",
-	"character.standup",
-	"compass",
+	--"statusbar.posn",
+	--"statusbar.alterform",
+	--"highlighter.custom",
+	--"character.standup",
+	--"compass",
 }
 
 dslpnp.config.initialize = {  -- List of scripts to initialize upon connect -- Scripts in sidebar not included
@@ -41,10 +41,10 @@ dslpnp.config.initialize = {  -- List of scripts to initialize upon connect -- S
 	"moons",
 	"roller",
 	--"speedwalk",
-	--"affects.echoes",
-	--"affects.flags",
-	--"affects.respell",
-	--"affects.gag",
+	"affects.echoes",
+	"affects.flags",
+	"affects.respell",
+	"affects.gag",
 	"character.equipment",
 	"character.disarm",
 	"character.spellup",
@@ -55,11 +55,11 @@ dslpnp.config.initialize = {  -- List of scripts to initialize upon connect -- S
 }
 
 dslpnp.config.disable = {  -- List of scripts to disable upon connect
---	"gourd",
+	--"gourd",
 	"enchant",
 	"affects.bar",
 	"highlighter.custom",
-	"affects.gag",
+	--"affects.gag",
 	"compass",
 }
 
@@ -68,24 +68,22 @@ dslpnp.config.sidebar = {
 	width = "35%",
 	position = "right",
 	top = {  -- List of scripts to be positioned in the top section of the sidebar
-		height = "45%",  -- height must be in percent
+		height = "50%",  -- height must be in percent
 		"chat",
 	},
 	middle = {  -- List of scripts to be positioned in the middle section of the sidebar
-		height = "10%",
-		"buttons",
-		"history",
+		height = "0%"
 	},
 	bottom = {  -- List of scripts to be positioned in the bottom section of the sidebar
-		height = "45%",  -- height must be in percent
+		height = "50%",  -- height must be in percent
 		"affects",
 		"enchant",
 		"gourd",
-		"battle",
+		--"battle",
 	},
 	display = {  -- determines what windows to display on connect
 		top = {{"chat",1}},
-		middle = {"buttons"},
+		middle = {},
 		bottom = {"affects","gourd"},
 	}
 }
@@ -298,8 +296,9 @@ dslpnp.config.command = {
 dslpnp.config.affects.flags = {
 	flag_border_left = "(",
 	flag_border_right = ")",
-  flag_border_color = "white",
+        flag_border_color = "white",
 	flag_color = "dsl_lt_yellow",
+	flag_list = {},
 	--flags_list = {"sanctuary", "haste", "bless", "fly", "pass door",
 		--"protection good", "protection evil", "protection neutral"},
 	flag_line_location = "beginning",
